@@ -10,6 +10,19 @@ const start = () => {
     fetch(query).then(question => {
         return question.json()
     }).then(displayResult)
+    let time1 = 4
+    //
+    let a = setInterval(() => {
+        if (time1 >= 0) {
+            console.log(time1);
+            document.querySelector(".time-table").innerHTML = `${time1} saniye kaldı`
+            time1--
+        }
+        if (time1 === -1) {
+            document.querySelector(".time-table").innerHTML = `0`
+            clearInterval()
+        }
+    }, 1000);
 }
 let arr
 const displayResult = (result) => {
@@ -17,6 +30,8 @@ const displayResult = (result) => {
     main()
 }
 const btnClick = (e) => {
+    let btn_click = document.getElementById("btn-sound")
+    btn_click.play()
     console.log(e.target.id);
     let _index = index;
     console.log("btnClick");
@@ -41,13 +56,17 @@ const isControl = (i, answer) => {
     if (arr[i].Answer === answer) {
         _true++
         document.querySelector(`#${answer}`).style.backgroundColor = "green"
+        let true_audio = document.getElementById("true-sound")
+        true_audio.play()
     }
     else {
         _false++
         document.querySelector(`#${answer}`).style.backgroundColor = "red"
+        let false_audio = document.getElementById("false-sound")
+        false_audio.play()
     }
     document.querySelector(".true").innerHTML = `${_true} Doğru`
-    document.querySelector(".false").innerHTML =`${_false} Yanlış`
+    document.querySelector(".false").innerHTML = `${_false} Yanlış`
     let time = 0
     let intervalID = setInterval(stop = () => {
         if (time < 1) {
@@ -83,7 +102,7 @@ function main() {
 }
 
 const queryGet = () => {
-    document.querySelector(".question-count").innerHTML =`${ index + 1}. Soru`
+    document.querySelector(".question-count").innerHTML = `${index + 1}. Soru`
     document.querySelector(".question").innerHTML = arr[index].question
     document.querySelector("#A").innerHTML = arr[index].A
     document.querySelector("#B").innerHTML = arr[index].B

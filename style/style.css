@@ -15,26 +15,36 @@ body{
     height: auto;
     margin-top: 80px;
     user-select: none;
-    color: #fff;
+    color: var(---fontColor);
 }
 :root{
     --borderRadius:60px;
     --backgroundColor: #008080;
     --bgColoHover:#4682b4;
+    ---fontColor:#fff;
 }
 #score{
     width: 75%;
     height: auto;
     margin: 0 auto;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-evenly;
 }
-.time-table{
-    width: 60px;
-    height: 60px;
-    margin: 0 auto;
+.start-btn{
+    border: 0;
+    color: var(---fontColor);
+    cursor: pointer;
+}
+.start-btn:hover{
+    background-color: var(--bgColoHover);
+}
+.time-table,.question-count,.sum-result,.start-btn{
+    width: 100px;
+    height: 80px;
     border-radius: 100px;
     background-color:var(--backgroundColor);
-    line-height: 65px;
+    line-height: 80px;
 }
 #content{
     width: 75%;

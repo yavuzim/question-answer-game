@@ -1,0 +1,28 @@
+{
+    "datas": [
+        {
+            "question": "Türkiye'nin Başkenti?",
+            "A": "İstanbul",
+            "B": "Ankara",
+            "C": "Konya",
+            "D": "Edirne",
+            "Answer": "B"
+        },
+        {
+            "question": "Hangisi Asya Kıtasında Bir Ülkedir?",
+            "A": "Pakistan",
+            "B": "Meksika",
+            "C": "Belarus",
+            "D": "Fransa",
+            "Answer": "A"
+        },
+        {
+            "question": "Hatay İli Hangi Bölgededir?",
+            "A": "Güneydoğu Anadolu",
+            "B": "Doğu Anadolu",
+            "C": "İç Anadolu",
+            "D": "Akdeniz",
+            "Answer": "D"
+        }
+    ]
+}

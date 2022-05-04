@@ -12,20 +12,23 @@
 <body>
     <div class="container">
         <div id="score">
-            <div class="time-table">
-                <label for="" class="time">25</label>
-            </div>
+            <button id="buttonStart" class="start-btn" onclick="start()">Başlat</button>
+            <div class="sum-result true">0</div>
+            <div class="time-table">0</div>
+            <div class="sum-result false">0</div>
+            <div class="question-count">2.soru</div>
         </div>
         <div id="content">
-            <div class="box-text question">Türkiye'nin Başkenti?</div>
+            <div class="box-text question"></div>
             <div class="box-text answers">
-                <div class="answer">ANKARA</div>
-                <div class="answer">HATAY</div>
-                <div class="answer">TRABZON</div>
-                <div class="answer">KONYA</div>
+                <div class="answer" id="A"></div>
+                <div class="answer" id="B"></div>
+                <div class="answer" id="C"></div>
+                <div class="answer" id="D"></div>
             </div>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 
 </html>

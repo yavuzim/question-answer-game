@@ -46,6 +46,12 @@ body{
     background-color:var(--backgroundColor);
     line-height: 80px;
 }
+.true{
+    background-color: rgb(30, 30, 197);
+}
+.false{
+    background-color: rgb(252, 39, 39);
+}
 #content{
     width: 75%;
     height: auto;

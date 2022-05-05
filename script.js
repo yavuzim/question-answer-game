@@ -1,4 +1,5 @@
 const api = 'data.json'
+
 let selectID = document.getElementById("content")
 selectID.style.display = "none"
 
@@ -10,20 +11,8 @@ const start = () => {
     fetch(query).then(question => {
         return question.json()
     }).then(displayResult)
-    let time1 = 4
-    //
-    let a = setInterval(() => {
-        if (time1 >= 0) {
-            console.log(time1);
-            document.querySelector(".time-table").innerHTML = `${time1} saniye kaldı`
-            time1--
-        }
-        if (time1 === -1) {
-            document.querySelector(".time-table").innerHTML = `0`
-            clearInterval()
-        }
-    }, 1000);
 }
+
 let arr
 const displayResult = (result) => {
     arr = result.datas.map(e => { return e });
@@ -40,7 +29,11 @@ const btnClick = (e) => {
         if (time < 3) {
             document.querySelector(`#${e.target.id}`).style.backgroundColor = "orange"
             time++
+            clearInterval(letintervalMatch)
             console.log("time 1 : " + time);
+            matchTime = 0
+            document.querySelector(".time-table").innerHTML = `${matchTime} saniye`
+            time_sound.pause()
         }
         else {
             console.log("gel 1");
@@ -67,19 +60,16 @@ const isControl = (i, answer) => {
     }
     document.querySelector(".true").innerHTML = `${_true} Doğru`
     document.querySelector(".false").innerHTML = `${_false} Yanlış`
-    let time = 0
+    let questionTime = 0
     let intervalID = setInterval(stop = () => {
-        if (time < 1) {
-            time++
-            console.log("time 2 : " + time);
+        if (questionTime < 1) {
+            questionTime++
         } else {
-            console.log("gel 2");
             clearInterval(intervalID)
+            matchTime = 26
             main()
         }
     }, 1000)
-    if (time === 2) {
-    }
 }
 
 const clickOn = () => {
@@ -93,12 +83,26 @@ const clickOn = () => {
     d.addEventListener("click", btnClick)
 }
 
-let index = -1
+let index = -1, matchTime = 25, time_sound,letintervalMatch
 function main() {
     console.log("Doğru : " + _true + " \n" + "Yanlış : " + _false);
     clickOn()
     index++
     queryGet(index)
+
+    letintervalMatch=setInterval(() => {
+        if (matchTime >= 0) {
+            time_sound = document.getElementById("time-sound")
+            time_sound.play()
+            matchTime--
+            document.querySelector(".time-table").innerHTML = `${matchTime} saniye`
+        }
+        if (matchTime === -1) {
+            document.querySelector(".time-table").innerHTML = `0`
+            clearInterval(letintervalMatch)
+            time_sound.pause()
+        }
+    }, 1000);
 }
 
 const queryGet = () => {

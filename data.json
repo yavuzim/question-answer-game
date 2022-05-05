@@ -23,6 +23,14 @@
             "C": "İç Anadolu",
             "D": "Akdeniz",
             "Answer": "D"
+        },
+        {
+            "question": "Osmanlı'nın Kurucusu Kimdir?",
+            "A": "Mustafa Kemal Atatürk",
+            "B": "Kanuni Sultan Süleyman",
+            "C": "Osman Gazi",
+            "D": "Genç Osman",
+            "Answer": "C"
         }
     ]
 }

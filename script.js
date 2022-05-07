@@ -32,7 +32,7 @@ const btnClick = (e) => {
             clearInterval(letintervalMatch)
             console.log("time 1 : " + time);
             matchTime = 0
-            document.querySelector(".time-table").innerHTML = `${matchTime} saniye`
+            document.querySelector(".time-table").innerHTML = `${matchTime}`
             time_sound.pause()
         }
         else {
@@ -55,6 +55,7 @@ const isControl = (i, answer) => {
     else {
         _false++
         document.querySelector(`#${answer}`).style.backgroundColor = "red"
+        document.querySelector(`#${arr[i].Answer}`).style.backgroundColor = "green"
         let false_audio = document.getElementById("false-sound")
         false_audio.play()
     }
@@ -83,19 +84,19 @@ const clickOn = () => {
     d.addEventListener("click", btnClick)
 }
 
-let index = -1, matchTime = 25, time_sound,letintervalMatch
+let index = -1, matchTime = 25, time_sound, letintervalMatch
 function main() {
     console.log("Doğru : " + _true + " \n" + "Yanlış : " + _false);
     clickOn()
     index++
     queryGet(index)
 
-    letintervalMatch=setInterval(() => {
+    letintervalMatch = setInterval(() => {
         if (matchTime >= 0) {
             time_sound = document.getElementById("time-sound")
             time_sound.play()
             matchTime--
-            document.querySelector(".time-table").innerHTML = `${matchTime} saniye`
+            document.querySelector(".time-table").innerHTML = `${matchTime}`
         }
         if (matchTime === -1) {
             document.querySelector(".time-table").innerHTML = `0`

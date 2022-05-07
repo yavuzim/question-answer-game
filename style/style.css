@@ -5,10 +5,11 @@
     list-style: none;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
-    overflow-y: hidden;
+    box-sizing: border-box;
 }
 body{
     height: 100vh;
+    background-color: 	lightgrey;
 }
 .container{
     width: 100%;
@@ -40,11 +41,12 @@ body{
     background-color: var(--bgColoHover);
 }
 .time-table,.question-count,.sum-result,.start-btn{
-    width: 100px;
+    width: 80px;
     height: 80px;
     border-radius: 100px;
     background-color:var(--backgroundColor);
     line-height: 80px;
+    font-size: small;
 }
 .true{
     background-color: rgb(30, 30, 197);
@@ -67,16 +69,16 @@ body{
     border-style: solid;
 }
 .answers{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(2,550px);
+    grid-template-rows: repeat(2,100px);
     padding: 5px;
+    justify-content: space-between;
 }
 .answer{ 
     background-color:var(--backgroundColor);
     border-radius:var(--borderRadius);
-    width: 565px;
-    height: 80px;
+    padding: 8px;
     margin-top: 12px;
     border-style: solid;
     line-height: 72px;  
@@ -85,3 +87,43 @@ body{
     cursor: pointer;
     background-color: var(--bgColoHover);
 }
+@media only screen and (max-width: 1500px){
+    .answers{
+        display: grid;
+        grid-template-columns: repeat(2,8fr);
+        grid-template-rows: repeat(2,100px);
+        padding: 5px;
+    }
+  }
+  @media only screen and (max-width: 900px) and (min-width: 375px) {
+    #score{
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .time-table,.question-count,.sum-result,.start-btn{
+        width: 50px;
+        height: 50px;
+        border-radius: 100px;
+        background-color:var(--backgroundColor);
+        line-height: 50px;
+        margin: 0 -40px 0 -40px;
+        font-size: small;
+    }.start-btn{
+        border: 0;
+        color: var(---fontColor);
+        cursor: pointer;
+    }
+    .start-btn:hover{
+        background-color: var(--bgColoHover);
+    }
+    .true{
+        background-color: rgb(30, 30, 197);
+    }
+    .false{
+        background-color: rgb(252, 39, 39);
+    }
+  }

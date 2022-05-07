@@ -1,16 +1,30 @@
 const api = 'data.json'
-
-let selectID = document.getElementById("content")
+let selectID = document.querySelector(".container")
 selectID.style.display = "none"
+let result = document.querySelector(".result")
+result.style.display = "none"
+let bodyImage = document.querySelector(".body-image")
 
+let index, progressValue, time_sound, progress, progressBar
 const start = () => {
+    index = -1
+    progressValue = 25
+    _true = 0, _false = 0, score = 0
     if (selectID.style.display === "none") {
         selectID.style.display = "block";
+        bodyImage.style.display = "none"
+        result.style.display = "none"
     }
     let query = api
     fetch(query).then(question => {
         return question.json()
     }).then(displayResult)
+}
+
+function displayElement() {
+    selectID.style.display = "none";
+    bodyImage.style.display = "none"
+    result.style.display = "block"
 }
 
 let arr
@@ -21,44 +35,44 @@ const displayResult = (result) => {
 const btnClick = (e) => {
     let btn_click = document.getElementById("btn-sound")
     btn_click.play()
-    console.log(e.target.id);
     let _index = index;
-    console.log("btnClick");
     let time = 0
     let intervalID1 = setInterval(stop = () => {
         if (time < 3) {
             document.querySelector(`#${e.target.id}`).style.backgroundColor = "orange"
             time++
-            clearInterval(letintervalMatch)
-            console.log("time 1 : " + time);
-            matchTime = 0
-            document.querySelector(".time-table").innerHTML = `${matchTime}`
+            clearInterval(progress)
+            let _progressValue = progressValue
+            document.querySelector(".value-container").innerHTML = `${_progressValue}`
             time_sound.pause()
         }
         else {
-            console.log("gel 1");
             clearInterval(intervalID1)
             isControl(_index, e.target.id)
         }
     }, 1000)
 }
 
-let _true = 0, _false = 0
+let _true = 0, _false = 0, score = 0
 const isControl = (i, answer) => {
-    console.log("isControl");
+
     if (arr[i].Answer === answer) {
         _true++
+        score += 5
         document.querySelector(`#${answer}`).style.backgroundColor = "green"
         let true_audio = document.getElementById("true-sound")
         true_audio.play()
     }
     else {
         _false++
+        score -= 2
         document.querySelector(`#${answer}`).style.backgroundColor = "red"
         document.querySelector(`#${arr[i].Answer}`).style.backgroundColor = "green"
         let false_audio = document.getElementById("false-sound")
+        if (score < 0) score = 0
         false_audio.play()
     }
+    document.querySelector(".score-field").innerHTML = score
     document.querySelector(".true").innerHTML = `${_true} Doğru`
     document.querySelector(".false").innerHTML = `${_false} Yanlış`
     let questionTime = 0
@@ -67,7 +81,7 @@ const isControl = (i, answer) => {
             questionTime++
         } else {
             clearInterval(intervalID)
-            matchTime = 26
+            progressValue = 25
             main()
         }
     }, 1000)
@@ -84,29 +98,50 @@ const clickOn = () => {
     d.addEventListener("click", btnClick)
 }
 
-let index = -1, matchTime = 25, time_sound, letintervalMatch
+
 function main() {
-    console.log("Doğru : " + _true + " \n" + "Yanlış : " + _false);
     clickOn()
     index++
     queryGet(index)
+    progressBar = document.querySelector(".circular-progress")
 
-    letintervalMatch = setInterval(() => {
-        if (matchTime >= 0) {
-            time_sound = document.getElementById("time-sound")
-            time_sound.play()
-            matchTime--
-            document.querySelector(".time-table").innerHTML = `${matchTime}`
-        }
-        if (matchTime === -1) {
-            document.querySelector(".time-table").innerHTML = `0`
-            clearInterval(letintervalMatch)
+    let speed = 1000
+    progress = setInterval(() => {
+        progressValue--
+        document.querySelector(".value-container").innerHTML = `${progressValue}`
+        progressBar.style.background = `conic-gradient(
+            #4d5bf9 ${progressValue * 15}deg,
+            #cadcff ${progressValue * 3.6}deg
+            )`
+        time_sound = document.getElementById("time-sound")
+        time_sound.play()
+        if (progressValue === -1) {
+            clearInterval(progress)
             time_sound.pause()
+            document.querySelector(".value-container").innerHTML = `24`
+            progressBar.style.background = `conic-gradient(
+                #4d5bf9 ${progressValue * 15}deg,
+                #cadcff ${progressValue * 3.6}deg
+                )`
+            selectID.style.display = "none"
+            result.style.display = "block"
+            let messageField = document.querySelector(".message-field")
+            let messageElement = document.createElement("div")
+            messageElement.className = "message"
+            messageField.appendChild(messageElement)
+            messageElement.textContent = "SÜRENİZ YETMEDİ :("
         }
-    }, 1000);
+    }, speed);
 }
 
 const queryGet = () => {
+    console.log("queryGet");
+    console.log("arr : " + arr.length);
+    console.log("index : " + index);
+    if (index === arr.length) {
+        gameResult()
+    }
+
     document.querySelector(".question-count").innerHTML = `${index + 1}. Soru`
     document.querySelector(".question").innerHTML = arr[index].question
     document.querySelector("#A").innerHTML = arr[index].A
@@ -115,6 +150,31 @@ const queryGet = () => {
     document.querySelector("#D").innerHTML = arr[index].D
     let a = ["A", "B", "C", "D"]
     a.forEach(e => {
-        document.getElementById(`${e}`).style.backgroundColor = "#008080"
+        document.getElementById(`${e}`).style.backgroundColor = "#063f3f"
     });
+}
+
+const gameResult = () => {
+    displayElement()
+    let messageField = document.querySelector(".message-field")
+    let messageElement = document.createElement("div")
+    messageElement.className = "message"
+    messageField.appendChild(messageElement)
+    let spanElement = document.querySelector(".message")
+    let falseElement = document.createElement("span")
+    falseElement.className = "false-message"
+    let trueElement = document.createElement("span")
+    trueElement.className = "true-message"
+    let scoreElement = document.createElement("span")
+    scoreElement.className = "score-message"
+    trueElement.textContent = `Doğru : ${_true}`
+    falseElement.textContent = `Yanlış : ${_false}`
+    scoreElement.textContent = `Puan : ${score}`
+    spanElement.appendChild(trueElement)
+    spanElement.appendChild(falseElement)
+    spanElement.appendChild(scoreElement)
+    trueElement.style.color = "	#4b0082"
+    falseElement.style.color = "#ff0000"
+    scoreElement.style.color = "#ffd700"
+
 }

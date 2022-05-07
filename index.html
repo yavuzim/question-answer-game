@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/style.css">
-    <title>Document</title>
+    <title>GAME</title>
 </head>
 
 <body>
@@ -22,22 +22,40 @@
     <audio id="time-sound">
         <source src="sounds/1-dakika-sayac-ve-geri-sayim-tik-tak-sesi-1-minute-countdown-timer-plank-hareketi.mp3">
     </audio>
+    <div class="body-image" onclick="start()">
+    </div>
     <div class="container">
-        <div id="score">
-            <button id="buttonStart" class="start-btn" onclick="start()">Başlat</button>
-            <div class="sum-result true">0</div>
-            <div class="time-table">0</div>
-            <div class="sum-result false">0</div>
-            <div class="question-count">0</div>
-        </div>
-        <div id="content">
-            <div class="box-text question"></div>
-            <div class="box-text answers">
-                <div class="answer" id="A"></div>
-                <div class="answer" id="B"></div>
-                <div class="answer" id="C"></div>
-                <div class="answer" id="D"></div>
+        <div id="question-field">
+            <div id="score">
+                <div class="score-field">0</div>
+                <div class="sum-result true">0</div>
+                <div class="circular">
+                    <div class="circular-progress">
+                        <div class="value-container">
+                            25
+                        </div>
+                    </div>
+                </div>
+                <div class="sum-result false">0</div>
+                <div class="question-count">0</div>
             </div>
+            <div id="content">
+                <div class="box-text question"></div>
+                <div class="box-text answers">
+                    <div class="answer" id="A"></div>
+                    <div class="answer" id="B"></div>
+                    <div class="answer" id="C"></div>
+                    <div class="answer" id="D"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="result">
+        <div class="message-field">
+
+        </div>
+        <div class="btn">
+            <button onclick="start()">TEKRAR OYNA</button>
         </div>
     </div>
     <script src="script.js"></script>

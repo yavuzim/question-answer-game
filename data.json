@@ -1,7 +1,7 @@
 {
     "datas": [
         {
-            "question": "Türkiye'nin Başkenti?",
+            "question": "Türkiye'nin Başkenti",
             "A": "İstanbul",
             "B": "Ankara",
             "C": "Konya",
@@ -9,7 +9,7 @@
             "Answer": "B"
         },
         {
-            "question": "Hangisi Asya Kıtasında Bir Ülkedir?",
+            "question": "Hangisi Asya Kıtasında Bir Ülkedir",
             "A": "Pakistan",
             "B": "Meksika",
             "C": "Belarus",
@@ -17,20 +17,28 @@
             "Answer": "A"
         },
         {
-            "question": "Hatay İli Hangi Bölgededir?",
-            "A": "Güneydoğu Anadolu",
-            "B": "Doğu Anadolu",
-            "C": "İç Anadolu",
-            "D": "Akdeniz",
+            "question": "'..... Savaşından Sonra Türklere Anadolu'nun Kapıları Açılmıştır.' Boşluğa Hangisi Gelmelidir",
+            "A": "Çaldıran",
+            "B": "Kurtuluş",
+            "C": "Ankara",
+            "D": "Malazgirt",
             "Answer": "D"
         },
         {
-            "question": "Osmanlı'nın Kurucusu Kimdir?",
+            "question": "Osmanlı'nın Kurucusu Kimdir",
             "A": "Mustafa Kemal Atatürk",
             "B": "Kanuni Sultan Süleyman",
             "C": "Osman Gazi",
             "D": "Genç Osman",
             "Answer": "C"
+        },
+        {
+            "question": "Osmanlı Devleti'nin İlk Halife Padişahı Kimdir",
+            "A": "Fatih Sultan Mehmet",
+            "B": "Yavuz Sultan Selim",
+            "C": "Osman Gazi",
+            "D": "II. Abdulhamit",
+            "Answer": "B"
         }
     ]
 }

@@ -6,41 +6,46 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
     box-sizing: border-box;
-    overflow-y: hidden;
 }
-:root{
-    --borderRadius:60px;
-    --bodyColor:rgb(211, 211, 211);
+
+:root {
+    --borderRadius: 60px;
+    --bodyColor: rgb(211, 211, 211);
     --backgroundColor: #063f3f;
-    --bgColorHover:	#4b0082;
-    ---fontColor:#fff;
-    --progressBarColor:#4d5bf9;
+    --bgColorHover: #4b0082;
+    ---fontColor: #fff;
+    --progressBarColor: #4d5bf9;
 }
-body{
+
+body {
     background-image: url('/images/bg.png');
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
+    overflow-y: hidden;
 }
-.body-image{
+
+.body-image {
     width: 100%;
-    height:100vh;
+    height: 100vh;
     display: block;
-    background-image: url('/images/Fintechtocat.png');   
+    background-image: url('/images/Fintechtocat.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    background-size:50%; 
+    background-size: 50%;
 }
-.container{
+
+.container {
     width: 100%;
     height: auto;
     margin-top: 80px;
     user-select: none;
     color: var(---fontColor);
 }
-#score{
+
+#score {
     width: 75%;
     height: auto;
     margin: 0 auto;
@@ -49,22 +54,25 @@ body{
     justify-content: space-evenly;
     align-items: center;
 }
-.circular{
+
+.circular {
     width: 180px;
     height: 180px;
     display: grid;
     place-items: center;
 }
-.circular-progress{
-   position: relative;
-   height: 130px;
-   width: 130px;
-   background-color:  var(--progressBarColor);
-   border-radius: 50%; 
-   display: grid;
-   place-items: center;
+
+.circular-progress {
+    position: relative;
+    height: 130px;
+    width: 130px;
+    background-color: var(--progressBarColor);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
 }
-.circular-progress::before{
+
+.circular-progress::before {
     content: "";
     position: absolute;
     height: 84%;
@@ -72,13 +80,17 @@ body{
     background-color: var(--bodyColor);
     border-radius: 50%;
 }
-.value-container{
+
+.value-container {
     position: relative;
     font-size: 30px;
     font-weight: 700;
-    color:  var(--progressBarColor);
+    color: var(--progressBarColor);
 }
-.question-count,.sum-result,.score-field{
+
+.question-count,
+.sum-result,
+.score-field {
     width: 80px;
     height: 80px;
     border-radius: 100px;
@@ -86,46 +98,58 @@ body{
     font-size: small;
     border-style: solid;
 }
-.question-count,.sum-result,.score-field{
-    background-color:var(--backgroundColor);
+
+.question-count,
+.sum-result,
+.score-field {
+    background-color: var(--backgroundColor);
 }
-.true{
+
+.true {
     background-color: rgb(24, 24, 114);
 }
-.false{
+
+.false {
     background-color: rgb(151, 29, 29);
 }
-#content{
+
+#content {
     width: 75%;
     height: auto;
     margin: 0 auto;
 }
-.box-text{
+
+.box-text {
     width: auto;
 }
-.question{
+
+.question {
     background-color: var(--backgroundColor);
-    border-radius:var(--borderRadius);
+    border-radius: var(--borderRadius);
     padding: 40px;
     border-style: solid;
 }
-.answers{
+
+.answers {
     display: grid;
-    grid-template-columns: repeat(2,550px);
-    grid-template-rows: repeat(2,100px);
+    grid-template-columns: repeat(2, 550px);
+    grid-template-rows: repeat(2, 100px);
     justify-content: space-between;
 }
-.answer{     
-    border-radius:var(--borderRadius);
+
+.answer {
+    border-radius: var(--borderRadius);
     margin-top: 12px;
     border-style: solid;
-    line-height: 72px;  
+    line-height: 72px;
 }
-.answer:hover{
+
+.answer:hover {
     cursor: pointer;
     background-color: var(--bgColoHover);
 }
-.result{
+
+.result {
     width: 60%;
     height: 400px;
     background-color: var(---fontColor);
@@ -133,43 +157,50 @@ body{
     position: absolute;
     left: 50%;
     top: 50%;
-   transform: translate(-50%,-50%);
-   text-align: center;
-   line-height: 300px;
-   font-size: 50px;
-   font-weight: 900;
-   opacity: 0.9;
-   background-color: var(--backgroundColor);
-   border-radius: 10%;
-   box-shadow: 15px 15px 15px;
-   user-select: none;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    line-height: 300px;
+    font-size: 50px;
+    font-weight: 900;
+    opacity: 0.9;
+    background-color: var(--backgroundColor);
+    border-radius: 10%;
+    box-shadow: 15px 15px 15px;
+    user-select: none;
 }
-.result>.message-field{
+
+.result>.message-field {
     height: 200px;
     opacity: 1;
-    color: var(---fontColor); 
+    color: var(---fontColor);
     display: block;
 }
-.result>.message{
+
+.result>.message {
     width: 50px;
     height: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.false-message,.true-message,.score-message{
-    font-size: 45px;
+
+.false-message,
+.true-message,
+.score-message {
+    font-size: 100%;
     font-weight: 800;
     margin: 20px;
     font-family: Arial, Helvetica, sans-serif
 }
-.result>.btn{
+
+.result>.btn {
     height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.result>.btn>button{
+
+.result>.btn>button {
     margin: 0 auto;
     border-radius: 10px;
     padding: 10px;
@@ -178,49 +209,296 @@ body{
     color: var(---fontColor);
     border: 1px solid;
 }
-.result>button:hover{
+
+.result>button:hover {
     background-color: var(--backgroundColor);
 }
-@media only screen and (max-width: 1500px){
-   
-body{
-    overflow: auto;
-}
-    .answers{
-        display: grid;
-        grid-template-columns: repeat(2,8fr);
-        grid-template-rows: repeat(2,100px);
-        padding: 5px;
+
+@media only screen and (max-width: 1500px) {
+
+    body {
+        overflow-y: auto;
     }
-  }
-  @media only screen and (max-width: 900px) and (min-width: 375px) {
-    
-body{
-    background-color: var(--backgroundColor);
-    background-image: none;
-    overflow: auto;
-}
-    #score{
-        width: 100%;
+
+    #score {
+        width: 75%;
         height: auto;
         margin: 0 auto;
         margin-bottom: 20px;
         display: flex;
         justify-content: space-evenly;
+        align-items: center;
     }
-    .time-table,.question-count,.sum-result{
+
+    .circular {
+        width: 180px;
+        height: 180px;
+        display: grid;
+        place-items: center;
+    }
+
+    .circular-progress {
+        position: relative;
+        height: 130px;
+        width: 130px;
+        background-color: var(--progressBarColor);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+    }
+
+    .circular-progress::before {
+        content: "";
+        position: absolute;
+        height: 84%;
+        width: 84%;
+        background-color: var(--bodyColor);
+        border-radius: 50%;
+    }
+
+    .value-container {
+        position: relative;
+        font-size: 30px;
+        font-weight: 700;
+        color: var(--progressBarColor);
+    }
+
+    .question-count,
+    .sum-result,
+    .score-field {
+        width: 80px;
+        height: 80px;
+        border-radius: 100px;
+        line-height: 80px;
+        font-size: small;
+        border-style: solid;
+    }
+
+    .question-count,
+    .sum-result,
+    .score-field {
+        background-color: var(--backgroundColor);
+    }
+
+    .true {
+        background-color: rgb(24, 24, 114);
+    }
+
+    .false {
+        background-color: rgb(151, 29, 29);
+    }
+
+    .answers {
+        display: grid;
+        grid-template-columns: repeat(2, 8fr);
+        grid-template-rows: repeat(2, 100px);
+        padding: 5px;
+    }
+
+    .result {
+        width: 60%;
+        height: 400px;
+        background-color: var(---fontColor);
+        margin: 0 auto;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        line-height: 300px;
+        font-size: 50px;
+        font-weight: 900;
+        background-color: var(--backgroundColor);
+        opacity: 0.9;
+        border-radius: 10%;
+        box-shadow: 15px 15px 15px;
+        user-select: none;
+    }
+
+    .result>.message-field {
+        height: 200px;
+        opacity: 1;
+        color: var(---fontColor);
+        display: block;
+    }
+
+    .result>.message {
+        width: 20px;
+        height: 20px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .false-message,
+    .true-message,
+    .score-message {
+        font-size:60%;
+        font-weight: 800;
+        margin: 20px;
+        font-family: Arial, Helvetica, sans-serif
+    }
+
+}
+
+@media only screen and (max-width: 900px) and (min-width: 375px) {
+
+    body {
+        background-color: var(--backgroundColor);
+        background-image: none;
+        overflow-y: auto;
+    }
+
+    #score {
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .circular {
+        width: 90px;
+        height: 90px;
+        display: grid;
+        place-items: center;
+    }
+
+    .circular-progress {
+        position: relative;
+        height: 70px;
+        width: 70px;
+        background-color: var(--progressBarColor);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+    }
+
+    .circular-progress::before {
+        content: "";
+        position: absolute;
+        height: 84%;
+        width: 84%;
+        background-color: var(--bodyColor);
+        border-radius: 50%;
+    }
+
+    .value-container {
+        position: relative;
+        font-size: 30px;
+        font-weight: 700;
+        color: var(--progressBarColor);
+    }
+
+    .question-count,
+    .sum-result,
+    .score-field {
         width: 50px;
         height: 50px;
         border-radius: 100px;
-        background-color:var(--backgroundColor);
-        line-height: 50px;
-        margin: 0 -40px 0 -40px;
+        line-height: 45px;
         font-size: small;
+        border-style: solid;
     }
-    .true{
-        background-color: rgb(30, 30, 197);
+
+    .question-count,
+    .sum-result,
+    .score-field {
+        background-color: var(--backgroundColor);
     }
-    .false{
-        background-color: rgb(252, 39, 39);
+
+    .true {
+        background-color: rgb(24, 24, 114);
     }
-  }
+
+    .false {
+        background-color: rgb(151, 29, 29);
+    }
+    .false-message,
+    .true-message,
+    .score-message {
+        font-size: 40%;
+        font-weight: 800;
+        margin: 20px;
+        font-family: Arial, Helvetica, sans-serif
+    }
+}
+
+@media only screen and (max-width: 375px) {
+
+    body {
+        background-color: var(--backgroundColor);
+        background-image: none;
+        overflow-y: auto;
+    }
+
+    #score {
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .circular {
+        width: 90px;
+        height: 90px;
+        display: grid;
+        place-items: center;
+    }
+
+    .circular-progress {
+        position: relative;
+        height: 70px;
+        width: 70px;
+        background-color: var(--progressBarColor);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+    }
+
+    .circular-progress::before {
+        content: "";
+        position: absolute;
+        height: 84%;
+        width: 84%;
+        background-color: var(--bodyColor);
+        border-radius: 50%;
+    }
+
+    .value-container {
+        position: relative;
+        font-size: 30px;
+        font-weight: 700;
+        color: var(--progressBarColor);
+    }
+
+    .question-count,
+    .sum-result,
+    .score-field {
+        width: 50px;
+        height: 50px;
+        border-radius: 100px;
+        line-height: 45px;
+        font-size: small;
+        border-style: solid;
+    }
+
+    .question-count,
+    .sum-result,
+    .score-field {
+        background-color: var(--backgroundColor);
+    }
+
+    .true {
+        background-color: rgb(24, 24, 114);
+    }
+
+    .false {
+        background-color: rgb(151, 29, 29);
+    }
+}

@@ -4,12 +4,21 @@ selectID.style.display = "none"
 let result = document.querySelector(".result")
 result.style.display = "none"
 let bodyImage = document.querySelector(".body-image")
+let truePrint = document.querySelector(".true")
+let falsePrint = document.querySelector(".false")
+let scorePrint = document.querySelector(".score-field")
 
 let index, progressValue, time_sound, progress, progressBar
+let _true, _false, score
 const start = () => {
     index = -1
     progressValue = 25
-    _true = 0, _false = 0, score = 0
+    _true = 0
+    _false = 0
+    score = 0
+    truePrint.textContent = _true
+    falsePrint.textContent = _false
+    scorePrint.textContent = score
     if (selectID.style.display === "none") {
         selectID.style.display = "block";
         bodyImage.style.display = "none"
@@ -53,7 +62,6 @@ const btnClick = (e) => {
     }, 1000)
 }
 
-let _true = 0, _false = 0, score = 0
 const isControl = (i, answer) => {
 
     if (arr[i].Answer === answer) {
@@ -69,12 +77,11 @@ const isControl = (i, answer) => {
         document.querySelector(`#${answer}`).style.backgroundColor = "red"
         document.querySelector(`#${arr[i].Answer}`).style.backgroundColor = "green"
         let false_audio = document.getElementById("false-sound")
-        if (score < 0) score = 0
         false_audio.play()
     }
-    document.querySelector(".score-field").innerHTML = score
-    document.querySelector(".true").innerHTML = `${_true} Doğru`
-    document.querySelector(".false").innerHTML = `${_false} Yanlış`
+    scorePrint.textContent = score
+    truePrint.textContent = `${_true} Doğru`
+    falsePrint.textContent = `${_false} Yanlış`
     let questionTime = 0
     let intervalID = setInterval(stop = () => {
         if (questionTime < 1) {
@@ -125,11 +132,7 @@ function main() {
                 )`
             selectID.style.display = "none"
             result.style.display = "block"
-            let messageField = document.querySelector(".message-field")
-            let messageElement = document.createElement("div")
-            messageElement.className = "message"
-            messageField.appendChild(messageElement)
-            messageElement.textContent = "SÜRENİZ YETMEDİ :("
+            gameResult(0)
         }
     }, speed);
 }
@@ -139,11 +142,11 @@ const queryGet = () => {
     console.log("arr : " + arr.length);
     console.log("index : " + index);
     if (index === arr.length) {
-        gameResult()
+        gameResult(1)
     }
 
     document.querySelector(".question-count").innerHTML = `${index + 1}. Soru`
-    document.querySelector(".question").innerHTML = arr[index].question
+    document.querySelector(".question").innerHTML = `${arr[index].question}?`
     document.querySelector("#A").innerHTML = arr[index].A
     document.querySelector("#B").innerHTML = arr[index].B
     document.querySelector("#C").innerHTML = arr[index].C
@@ -153,28 +156,40 @@ const queryGet = () => {
         document.getElementById(`${e}`).style.backgroundColor = "#063f3f"
     });
 }
-
-const gameResult = () => {
+let messageElement
+const gameResult = (i) => {
     displayElement()
     let messageField = document.querySelector(".message-field")
-    let messageElement = document.createElement("div")
-    messageElement.className = "message"
-    messageField.appendChild(messageElement)
-    let spanElement = document.querySelector(".message")
-    let falseElement = document.createElement("span")
-    falseElement.className = "false-message"
-    let trueElement = document.createElement("span")
-    trueElement.className = "true-message"
-    let scoreElement = document.createElement("span")
-    scoreElement.className = "score-message"
-    trueElement.textContent = `Doğru : ${_true}`
-    falseElement.textContent = `Yanlış : ${_false}`
-    scoreElement.textContent = `Puan : ${score}`
-    spanElement.appendChild(trueElement)
-    spanElement.appendChild(falseElement)
-    spanElement.appendChild(scoreElement)
-    trueElement.style.color = "	#4b0082"
-    falseElement.style.color = "#ff0000"
-    scoreElement.style.color = "#ffd700"
+    if (messageField.children.length > 0) {
+        messageField.removeChild(messageElement)
+    }
+    if (i === 0) {
+        messageElement = document.createElement("div")
+        messageElement.className = "message"
+        messageField.appendChild(messageElement)
+        messageElement.textContent = "SÜRENİZ YETMEDİ :("
 
+    }
+    if (i === 1) {
+        messageField.textContent = ""
+        messageElement = document.createElement("div")
+        messageElement.className = "message"
+        messageField.appendChild(messageElement)
+        let parentElement = document.querySelector(".message")
+        let falseElement = document.createElement("span")
+        falseElement.className = "false-message"
+        let trueElement = document.createElement("span")
+        trueElement.className = "true-message"
+        let scoreElement = document.createElement("span")
+        scoreElement.className = "score-message"
+        trueElement.textContent = `Doğru : ${_true}`
+        falseElement.textContent = `Yanlış : ${_false}`
+        scoreElement.textContent = `Puan : ${score}`
+        parentElement.appendChild(trueElement)
+        parentElement.appendChild(falseElement)
+        parentElement.appendChild(scoreElement)
+        trueElement.style.color = "	#4b0082"
+        falseElement.style.color = "#ff0000"
+        scoreElement.style.color = "#ffd700"
+    }
 }
